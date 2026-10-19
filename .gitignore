@@ -1,0 +1,9 @@
+engine-lab/node_modules/
+engine-lab/qa/standalone.js
+engine-lab/qa/sample-report.md
+engine-lab/qa/*.png
+!engine-lab/qa/01-structure-preview.png
+!engine-lab/qa/09-final-offline-desktop.png
+!engine-lab/qa/12-final-offline-mobile.png
+*.zip
+.DS_Store

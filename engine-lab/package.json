@@ -1,0 +1,15 @@
+{
+  "name": "engine-studio-courseware",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8765 --directory dist",
+    "check": "node --check dist/app.js && node --check dist/engine.js && node --check dist/content.js",
+    "build": "node scripts/build.mjs",
+    "test": "node qa/verify.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}
