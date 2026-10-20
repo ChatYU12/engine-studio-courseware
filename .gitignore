@@ -1,4 +1,5 @@
 engine-lab/node_modules/
+heart-lab/node_modules/
 engine-lab/qa/standalone.js
 engine-lab/qa/sample-report.md
 engine-lab/qa/*.png

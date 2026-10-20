@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3f1eb">
+  <meta name="description" content="大学人体生理学交互实训：3D心脏解剖、心肌电活动、心动周期压力变化与体肺循环动力学。">
+  <title>心脏解剖与泵血机制 · 人体生理学实训</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231a3944'/%3E%3Cpath d='M32 52S9 39 9 23c0-8 10-13 17-4l6 8 7-9c8-9 17-3 17 5 0 16-24 29-24 29Z' fill='none' stroke='%23f48d7e' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至课程内容</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#anatomy" aria-label="心脏生理学实训首页">
+        <span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 41S5 30 5 17c0-7 9-11 14-3l5 6 5-7c6-7 14-3 14 4 0 13-19 24-19 24Z"/><path d="M8 24h10l4-8 6 17 4-9h8"/></svg></span>
+        <span class="brand-copy">CARDIAC LAB<small>人体生理学 · 交互实训</small></span>
+      </a>
+      <div class="side-label">课程单元 <span>本科教学版</span></div>
+      <nav id="courseNav" class="course-nav" aria-label="课程单元导航"></nav>
+      <div class="sidebar-bottom">
+        <div class="side-progress"><div><span>实训任务</span><b id="taskProgress">0 / 4</b></div><div class="progress-track"><i id="taskProgressBar"></i></div></div>
+        <div class="side-key"><span><i class="key-blue"></i>低氧血流</span><span><i class="key-red"></i>富氧血流</span><span><i class="key-gold"></i>电活动</span></div>
+        <button id="sourcesOpen" class="source-link">课程知识体系与参考来源 <span>↗</span></button>
+        <div class="edition">HEART · PHYSIOLOGY <span>2026</span></div>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="top-left"><button class="menu-toggle" id="menuToggle" aria-label="展开课程导航">☰</button><div class="crumb">数字实训室 <i>/</i> 心脏解剖与泵血机制</div></div>
+        <div class="top-right"><span class="offline-state"><i></i> 单文件离线课件</span><button class="teacher-open" id="teacherOpen">教师导学</button></div>
+      </header>
+
+      <main id="main">
+        <section class="course-head">
+          <div><div class="eyebrow"><span class="eyebrow-dot"></span> HUMAN PHYSIOLOGY <b>/</b> CARDIOVASCULAR SYSTEM</div>
+            <h1>心脏解剖与泵血机制</h1><p>从三维结构出发，沿电信号、压力变化与血流路径理解每一次心搏。</p></div>
+          <div class="course-meta"><span>大学人体生理学</span><b>实训课件 <i>·</i> 约 30 分钟</b></div>
+        </section>
+
+        <section class="cycle-dock" aria-label="联动心动周期控制">
+          <button id="cyclePlay" class="cycle-play" aria-label="播放心动周期" title="播放/暂停">▶</button>
+          <div class="cycle-dock-label"><span class="mini-label">同步观察 · 75 次/分示意</span><strong id="globalPhaseName">心房收缩</strong></div>
+          <div class="cycle-range-wrap"><input id="globalTime" aria-label="心动周期时间" type="range" min="0" max="1000" step="1" value="25"><div class="cycle-ticks"><span>P</span><span>QRS / S1</span><span>T</span><span>S2</span><span>充盈</span></div></div>
+          <div class="cycle-time"><b id="timeValue">0.02</b><span> / 0.80 s</span></div>
+        </section>
+
+        <nav class="module-tabs" id="moduleTabs" aria-label="课程章节"></nav>
+        <div class="module-context"><span id="moduleNumber">01</span><div><h2 id="moduleTitle">三维解剖</h2><p id="moduleDesc">识别四腔、四瓣、大血管、心壁和冠状循环</p></div><span class="context-tag" id="moduleTag">观察 · 点选 · 旋转</span></div>
+
+        <section class="panel" id="panel-overview" data-panel="overview" hidden>
+          <div class="overview-banner"><div><span class="eyebrow light">LEARNING MAP</span><h2>一台泵，两个串联回路，<br>一套精确的电—机械时序。</h2><p>解剖结构规定血流路径；心肌电活动决定收缩顺序；压力梯度驱动瓣膜启闭与血液流动。</p></div><div class="overview-seal"><span>PHYSIOLOGY</span><b>01—05</b><i>心脏实训</i></div></div>
+          <div class="overview-columns"><article class="content-card"><div class="card-kicker">本次学习目标 <span>01</span></div><ol class="objective-list"><li>在三维模型中定位四腔、四瓣、隔膜、大血管和冠状循环。</li><li>解释起搏细胞自律性、房室延搁与心室快速传导。</li><li>将 ECG、机械活动、瓣膜状态、左右心压力与容积变化放在同一时间轴上。</li><li>沿体循环和肺循环追踪血流，说明阻力/压力差异及两侧心室输出匹配。</li></ol></article><article class="content-card map-card"><div class="card-kicker">知识路径 <span>五个模块</span></div><div class="learning-map"><button data-jump="anatomy"><i>01</i><b>结构</b><small>腔室与瓣膜</small></button><span>→</span><button data-jump="electrical"><i>02</i><b>电活动</b><small>起搏与传导</small></button><span>→</span><button data-jump="cycle"><i>03</i><b>心动周期</b><small>压力与容积</small></button><span>→</span><button data-jump="circulation"><i>04</i><b>双循环</b><small>体肺动力学</small></button></div><button class="start-learning" data-jump="anatomy">开始三维实训 <span>→</span></button></article></div>
+          <div class="overview-foot"><div><span class="eyebrow">HOW TO USE</span><p>拖动模型旋转，滚轮缩放；拖动顶部周期游标，所有页面的电活动、压力曲线和血流状态会同步更新。</p></div><div><span class="eyebrow">MODEL NOTE</span><p>解剖形态与压力图是教学示意，不是患者影像、临床诊断或 CFD 仿真。数值为静息成人代表值。</p></div></div>
+        </section>
+
+        <section class="panel" id="panel-anatomy" data-panel="anatomy">
+          <div class="anatomy-layout">
+            <div class="model-card">
+              <div class="model-head"><div><span class="live-marker"></span> 3D HEART MODEL <span class="model-sub">教学剖面 · 前面观</span></div><span class="view-orientation">观察者左侧 = 人体右侧</span></div>
+              <div id="heartStage" class="heart-stage"><div class="loading-model">正在准备三维心脏模型…</div><div class="axis-widget"><i>上</i><span>前面观</span><b>心尖</b></div></div>
+              <div class="model-toolbar">
+                <div class="view-controls" aria-label="三维视角"><button data-view="front" class="active">前面</button><button data-view="posterior">后面</button><button data-view="left">左侧</button><button id="viewReset" title="复位视角">复位</button></div>
+                <div class="layer-controls" aria-label="解剖图层">
+                  <button class="layer-button" data-layer="conduction" aria-pressed="false"><i class="key-gold"></i>传导</button>
+                  <button class="layer-button" data-layer="flow" aria-pressed="false"><i class="key-blue"></i>血流</button>
+                  <button class="layer-button" data-layer="coronary" aria-pressed="false"><i class="key-red"></i>冠状血管</button>
+                  <button class="layer-button" data-layer="supports" aria-pressed="false"><i class="key-neutral"></i>腱索</button>
+                  <button class="layer-button" data-layer="septa" aria-pressed="true"><i class="key-neutral"></i>心间隔</button>
+                  <button class="layer-button" data-layer="labels" aria-pressed="true"><i class="key-neutral"></i>标注</button>
+                </div>
+              </div>
+              <div class="model-note"><span>↔ 拖动旋转　⊙ 滚轮/双指缩放　点选结构查看说明</span><small>结构关系示意 · 非影像分割</small></div>
+            </div>
+            <aside class="structure-inspector">
+              <div class="inspector-kicker">STRUCTURE INSPECTOR <span id="structureIndex">01</span></div>
+              <div class="structure-symbol" id="structureSymbol"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M27 19c-16 8-20 34-9 48l21 22 25-7 16-24-4-34-22-7-12 12-15-10Z"/><path d="M25 37h17l7-13 9 30 8-18h15"/></svg></div>
+              <span class="structure-tag" id="structureTag">选择模型结构</span><h3 id="structureName">从心腔开始</h3><div class="structure-en" id="structureEn">FOUR CHAMBERS · FOUR VALVES</div>
+              <p class="structure-body" id="structureBody">点击三维模型中的腔室、瓣膜或血管，或使用下方列表快速定位。</p>
+              <div class="observe-box"><span>实训观察</span><p id="structureCheck">先确认前面观的左右方向，再沿血流追踪一个完整腔室路径。</p></div>
+              <label class="structure-select-label" for="structureSelect">快速定位结构</label><select id="structureSelect"></select>
+              <div class="quick-path"><span class="mini-label">血流主路径</span><div>上/下腔静脉 <i>→</i> 右房 <i>→</i> 右室 <i>→</i> 肺 <i>→</i> 左房 <i>→</i> 左室 <i>→</i> 主动脉</div></div>
+            </aside>
+          </div>
+          <div class="below-model-grid"><article class="content-card"><div class="card-kicker">系统解剖定位 <span>四腔 · 四瓣</span></div><div class="anatomy-facts"><div><b>右心</b><p>右心房 → 三尖瓣 → 右心室 → 肺动脉瓣 → 肺动脉干</p></div><div><b>左心</b><p>左心房 → 二尖瓣 → 左心室 → 主动脉瓣 → 主动脉</p></div><div><b>心壁</b><p>心内膜 · 心肌层 · 心外膜；左心室壁厚于右心室壁</p></div></div></article><article class="content-card"><div class="card-kicker">房室瓣支持装置 <span>仅房室瓣</span></div><p class="card-copy">三尖瓣、二尖瓣瓣叶以腱索连接乳头肌。室缩时乳头肌同步收缩、腱索张紧，限制瓣叶向心房侧翻转；瓣膜启闭仍由压差决定。主动脉瓣和肺动脉瓣没有腱索与乳头肌。</p></article></div>
+        </section>
+
+        <section class="panel" id="panel-electrical" data-panel="electrical" hidden>
+          <div class="panel-intro"><div><span class="eyebrow">ELECTRICAL ACTIVATION</span><h3>心肌先发电，再按次序收缩。</h3></div><p>起搏细胞的自发去极化建立节律；工作心肌的动作电位把电活动转化为持续而协调的收缩。</p></div>
+          <div class="conduction-card content-card"><div class="card-kicker">传导系统 · 激动顺序 <span id="conductionStatus">等待 SA 结起搏</span></div>
+            <div class="conduction-visual"><svg id="conductionSvg" viewBox="0 0 900 310" role="img" aria-label="窦房结至浦肯野纤维的心脏传导路径示意图">
+              <defs><marker id="arrowGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#d49a36"/></marker></defs>
+              <path class="heart-outline" d="M436 55C365 16 273 55 286 137c13 82 96 137 164 166 59-26 152-84 165-164 13-82-80-122-153-84-9 5-20 13-26 20Z"/>
+              <path class="septum-line" d="M450 115v158"/>
+              <path class="conduction-path atrial-path" data-conduction="atria" d="M353 82C376 91 405 95 449 98c34 3 67 0 98-17"/>
+              <path class="conduction-path av-path" data-conduction="av" d="M354 84C370 111 393 130 423 149"/>
+              <path class="conduction-path his-path" data-conduction="his" d="M423 149 448 176v78"/>
+              <path class="conduction-path left-bundle" data-conduction="bundles" d="m448 178 25 25 53 43m-53-43 4 46"/>
+              <path class="conduction-path right-bundle" data-conduction="bundles" d="m448 178-24 28-48 39m48-39-2 45"/>
+              <path class="conduction-path purkinje-path" data-conduction="purkinje" d="M372 245 397 219 424 206 448 224 473 203 502 215 527 246m-130-27-12 28m111-44 14 44m-53-18v41"/>
+              <circle class="node sa-node" cx="354" cy="83" r="13"/><circle class="node av-node" cx="423" cy="149" r="11"/>
+              <circle class="electrical-dot" id="electricalDot" cx="354" cy="83" r="8"/>
+              <text class="svg-label" x="314" y="56">窦房结 SA</text><text class="svg-label" x="386" y="139">房室结 AV</text>
+              <text class="svg-label" x="449" y="164">房室束 / His</text><text class="svg-label" x="505" y="208">左束支</text><text class="svg-label" x="339" y="212">右束支</text>
+              <text class="svg-label" x="465" y="289">浦肯野纤维</text><text class="svg-small" x="290" y="288">右房</text><text class="svg-small" x="548" y="288">左室心尖</text>
+            </svg><div class="conduction-copy"><span class="mini-label">当前电事件</span><h4 id="electricalEventTitle">窦房结自发去极化</h4><p id="electricalEventBody">窦房结达到阈值后发放动作电位，激动向两心房传播。</p><div class="av-delay"><b>AV DELAY</b><span>房室结慢传导约 0.1 s 的生理性延搁，为心室末期充盈留出时间。</span></div></div></div>
+            <div class="conduction-steps" id="conductionSteps"></div>
+          </div>
+          <div class="electrical-grid"><article class="content-card ap-card"><div class="card-kicker">起搏细胞动作电位 <span>SA / AV 节</span></div><svg class="ap-svg" viewBox="0 0 560 210" role="img" aria-label="窦房结起搏细胞动作电位示意图"><path class="chart-grid" d="M55 28H532M55 80H532M55 132H532M55 180H532"/><path class="axis-line" d="M55 24V180H532"/><text x="10" y="37">+10</text><text x="24" y="85">−20</text><text x="24" y="137">−50</text><text x="24" y="184">−80</text><text x="18" y="15">mV</text><path class="ap-pacer" d="M60 174 C100 171 128 160 159 145 S216 114 239 99 C254 89 261 58 272 42 C287 22 313 25 324 54 C333 81 337 121 350 146 C366 176 395 174 413 171 S472 152 505 128"/><text x="123" y="132">4 · If/钙流入</text><text x="262" y="20">0 · Ca²⁺内流</text><text x="354" y="135">3 · K⁺外流</text><text x="65" y="202">舒张期自动去极化</text><text x="430" y="202">时间 →</text></svg><p class="card-copy">没有稳定静息电位。超极化激活的 If（净内向电流）及 Ca²⁺电流使膜电位逐渐接近阈值；第 0 期上升支主要由 Ca²⁺内流形成，第 3 期由 K⁺外流复极。自主神经调节起搏斜率和频率。</p></article>
+            <article class="content-card ap-card"><div class="card-kicker">心室工作肌动作电位 <span>快反应细胞</span></div><svg class="ap-svg" viewBox="0 0 560 210" role="img" aria-label="心室工作心肌细胞动作电位示意图"><path class="chart-grid" d="M55 28H532M55 80H532M55 132H532M55 180H532"/><path class="axis-line" d="M55 24V180H532"/><text x="10" y="37">+30</text><text x="24" y="85">0</text><text x="24" y="137">−50</text><text x="24" y="184">−90</text><text x="18" y="15">mV</text><path class="ap-working" d="M60 178 H172 C184 178 188 171 193 150 L207 31 C211 17 221 19 224 35 L231 68 C236 87 253 88 277 88 H376 C399 88 408 100 415 124 L430 166 C438 180 456 178 478 178 H525"/><text x="181" y="139">0 · Na⁺</text><text x="224" y="59">1</text><text x="298" y="76">2 · Ca²⁺ ↔ K⁺</text><text x="420" y="148">3 · K⁺</text><text x="80" y="202">4 · 稳定静息</text><text x="430" y="202">时间 →</text></svg><p class="card-copy">0 期快速 Na⁺内流；1 期短暂 K⁺外流；2 期 L 型 Ca²⁺内流与 K⁺外流相对平衡形成平台；3 期 K⁺外流复极；4 期维持稳定静息电位。平台期和长不应期有助于避免强直收缩。</p></article></div>
+          <div class="myocardium-grid"><article class="content-card"><div class="card-kicker">心肌的四项生理特性 <span>工作心肌 / 起搏组织</span></div><div class="property-list"><div><b>自律性</b><p>特定起搏细胞可自发产生节律性动作电位；正常由窦房结主导。</p></div><div><b>兴奋性</b><p>受到阈上刺激时产生动作电位的能力。</p></div><div><b>传导性</b><p>将局部兴奋传播到相邻心肌与专门传导组织的能力。</p></div><div><b>收缩性</b><p>动作电位触发 Ca²⁺升高及肌丝相互作用，产生张力和射血。</p></div></div></article><article class="content-card"><div class="card-kicker">兴奋—收缩耦联 <span>从 Ca²⁺到张力</span></div><div class="coupling-flow"><span>动作电位平台</span><i>→</i><span>L 型 Ca²⁺通道开放</span><i>→</i><span>肌浆网释放 Ca²⁺</span><i>→</i><span>肌钙蛋白结合</span><i>→</i><span>肌丝滑行 / 收缩</span></div><p class="card-copy">细胞间闰盘的缝隙连接有利于电耦联；Ca²⁺内流触发肌浆网进一步释放 Ca²⁺，随后通过肌钙蛋白调节肌丝交互。舒张与充盈对下一搏同样必要。</p></article></div>
+        </section>
+
+        <section class="panel" id="panel-cycle" data-panel="cycle" hidden>
+          <div class="panel-intro"><div><span class="eyebrow">CARDIAC CYCLE · WIGGERS VIEW</span><h3>阀门听压差的，血流顺压力梯度走。</h3></div><p>拖动上方游标或逐阶段播放。ECG、左右心压力曲线、容积和三维瓣膜状态共用同一周期时钟。</p></div>
+          <div class="phase-status content-card"><div class="phase-status-left"><span class="phase-ordinal" id="phaseOrdinal">01</span><div><span class="mini-label" id="phaseAlt">心室充盈末期</span><h4 id="phaseTitle">心房收缩</h4></div></div><div class="phase-facts"><div><span>ECG</span><b id="phaseEcg">P 波后</b></div><div><span>瓣膜</span><b id="phaseValves">房室瓣开 · 半月瓣闭</b></div><div><span>血流</span><b id="phaseFlows">心房 → 心室</b></div></div><p id="phaseCardText" class="phase-explainer"></p></div>
+          <div class="cycle-chart-card content-card"><div class="card-kicker">心电—压力同步图 <span>示意 Wiggers 图 · mmHg</span></div><div class="chart-legend"><span><i class="swatch" style="--c:#485763"></i>ECG</span><span><i class="swatch" style="--c:#c84e59"></i>左室</span><span><i class="swatch" style="--c:#bf9560"></i>主动脉</span><span><i class="swatch" style="--c:#d68e91"></i>左房</span><span><i class="swatch" style="--c:#298ead"></i>右室</span><span><i class="swatch" style="--c:#4b9cb1"></i>肺动脉</span><span><i class="swatch" style="--c:#78b5bf"></i>右房</span></div><div class="pressure-chart-wrap"><svg id="ecgChart" viewBox="0 0 1000 100" role="img" aria-label="心电图 P、QRS、T 波与心动周期时间轴对应"></svg><svg id="pressureChart" viewBox="0 0 1000 430" role="img" aria-label="心房、心室、主动脉和肺动脉压力随心动周期变化的示意曲线"></svg></div><div class="chart-caveat">左侧压力按约 0–140 mmHg 刻度，右侧压力按约 0–35 mmHg 独立刻度绘制；两幅共享时间轴，不能直接按曲线高度跨图比较。示意成人静息状态。</div></div>
+          <div class="volume-grid"><article class="content-card"><div class="card-kicker">左室容积变化 <span>EDV → ESV</span></div><svg id="volumeChart" viewBox="0 0 1000 190" role="img" aria-label="左心室容积随心动周期变化示意图"></svg><div class="volume-readout"><div><span>当前左室容积（示意）</span><b><strong id="volumeValue">118</strong> mL</b></div><div><span>每搏量</span><b><strong id="svValue">70</strong> mL</b></div><div><span>恒容阶段</span><b id="isovolumeState">非等容期</b></div></div></article><article class="content-card valve-card"><div class="card-kicker">四瓣状态 <span>由跨瓣压差决定</span></div><div class="valve-matrix" id="valveMatrix"></div><div class="sound-note"><b>S1</b> 房室瓣关闭　 <b>S2</b> 半月瓣关闭<br><span>心音与瓣膜关闭相关，不等同于瓣叶主动发力。</span></div></article></div>
+          <div class="phase-strip" id="phaseStrip" aria-label="心动周期阶段"></div>
+          <div class="formula-row"><div><b>SV</b><span>每搏量 = EDV − ESV</span></div><div><b>CO</b><span>心输出量 = HR × SV</span></div><div><b>ΔP</b><span>血流驱动力来自腔室/血管间压力差</span></div></div>
+        </section>
+
+        <section class="panel" id="panel-circulation" data-panel="circulation" hidden>
+          <div class="panel-intro"><div><span class="eyebrow">PULMONARY & SYSTEMIC CIRCUITS</span><h3>两个循环串联，左右泵压不同、流量匹配。</h3></div><p>右心把血液送入低压、低阻肺循环；左心把血液送入高压体循环。稳态时两心室的平均输出量需相等。</p></div>
+          <div class="circuit-card content-card"><div class="card-kicker">一滴血的完整路径 <span>按顺序点选 / 朗读</span></div><div class="circuit-legend"><span><i class="key-blue"></i>相对低氧血</span><span><i class="key-red"></i>相对富氧血</span><span class="small-note">动脉/静脉按离心/回心命名</span></div><div class="circuit-path" id="circuitPath"></div><div class="circuit-caption"><span id="circuitMessage">在心动周期游标移动时，观察回心充盈与心室射血如何交替。</span><button id="flowPlay">播放整条血流路径　→</button></div></div>
+          <div class="hemodynamic-grid"><article class="content-card pressure-table-card"><div class="card-kicker">压力量级对照 <span>静息成人代表值</span></div><table class="pressure-table"><thead><tr><th>腔室/血管</th><th>代表压力（mmHg）</th><th>意义</th></tr></thead><tbody><tr><td>左心室</td><td>约 120 / 5–12</td><td>高压输出驱动体循环</td></tr><tr><td>主动脉</td><td>约 120 / 80</td><td>体循环动脉压示意</td></tr><tr><td>右心室</td><td>约 25 / 0</td><td>低压泵血至肺动脉</td></tr><tr><td>肺动脉</td><td>约 25 / 8</td><td>低压肺循环动脉压</td></tr><tr><td>肺毛细血管</td><td>约 7 / 0</td><td>低压气体交换床代表值</td></tr></tbody></table><p class="table-note">数值为教材/生理学来源中的成人典型教学示意，具体范围受测量部位、呼吸、体位、年龄和状态影响，不用于个体诊断。右心房、左心房压力通常低，临床测值有范围。</p></article>
+            <article class="content-card resistance-card"><div class="card-kicker">同样的流量，不同的负荷 <span>肺循环 vs 体循环</span></div><div class="load-compare"><div class="load-row"><span>肺循环</span><div class="load-rail"><i class="pulmonary-load"></i></div><b>低压 · 低阻 · 高顺应性</b></div><div class="load-row"><span>体循环</span><div class="load-rail"><i class="systemic-load"></i></div><b>较高压 · 较高总阻力</b></div></div><div class="law-box"><span>简化关系</span><strong>Q ≈ ΔP / R</strong><p>在串联回路的稳态中，肺循环流量与体循环流量相等。左右室压力输出不同，左室壁更厚；每搏量则需匹配，避免血液持续在某一回路淤积。</p></div></article></div>
+          <div class="circulation-notes"><article class="content-card"><div class="card-kicker">两个常见误区 <span>即时辨析</span></div><div class="misconception"><b>动脉 ≠ 富氧血</b><p>肺动脉运送相对低氧血；动脉的定义是血液离开心脏。</p></div><div class="misconception"><b>左、右室输出不同？</b><p>瞬时压力和壁厚不同；正常稳态的左右室平均每搏输出量必须匹配。</p></div></article><article class="content-card"><div class="card-kicker">双循环的协调 <span>串联泵</span></div><p class="card-copy">右心输出经肺血管床完成气体交换后进入左心；左心输出经体循环组织后回到右心。肺血管床的低阻、高顺应性适应高流量气体交换；体循环则需建立较高驱动压力以克服系统血管阻力。</p><div class="flow-sync" id="flowSyncState">当前阶段：充盈与射血由同一周期协调，不是两个独立心跳。</div></article></div>
+        </section>
+
+        <section class="panel" id="panel-practice" data-panel="practice" hidden>
+          <div class="panel-intro"><div><span class="eyebrow">PRACTICAL TASKS & CHECKPOINT</span><h3>观察、解释，再用证据回答。</h3></div><p>完成四个短任务并提交 8 道形成性测验。答题反馈会说明理由，可反复练习。</p></div>
+          <div class="practice-layout"><div class="task-stack"><article class="content-card task-card"><label><input type="checkbox" data-task="1"><span class="task-number">01</span><span><b>三维结构定向</b><small>旋转模型，指出画面左侧为何是人体解剖右侧，并选出三尖瓣和肺动脉瓣。</small></span></label><button data-jump="anatomy">打开三维模型 →</button></article><article class="content-card task-card"><label><input type="checkbox" data-task="2"><span class="task-number">02</span><span><b>传导路径追踪</b><small>开启传导图层，口述 SA→AV→His→左右束支→Purkinje，并解释房室延搁。</small></span></label><button data-jump="electrical">打开电活动 →</button></article><article class="content-card task-card"><label><input type="checkbox" data-task="3"><span class="task-number">03</span><span><b>心动周期判读</b><small>把游标移至等容收缩和射血期，比较瓣膜状态与左室容积。</small></span></label><button data-jump="cycle">打开压力曲线 →</button></article><article class="content-card task-card"><label><input type="checkbox" data-task="4"><span class="task-number">04</span><span><b>双循环解释</b><small>复述完整血流路径，并解释为什么右心室壁比左室薄。</small></span></label><button data-jump="circulation">打开循环动力学 →</button></article><button id="exportNotes" class="export-notes">下载我的实训观察记录 ↓</button></div>
+            <article class="content-card quiz-card"><div class="card-kicker">随堂测验 <span>8 题 · 单选</span></div><div id="quizContainer"></div><div class="quiz-actions"><button id="submitQuiz" class="primary-button">提交并查看解析</button><button id="resetQuiz" class="secondary-button">重新作答</button></div><div id="quizResult" class="quiz-result" aria-live="polite"></div></article></div>
+          <div class="course-summary content-card"><div class="card-kicker">离开实训前，检查这五句话 <span>课程总结</span></div><ol><li>压力梯度决定瞬时血流；瓣膜被动启闭并维持单向流。</li><li>窦房结通常起搏；房室结延搁后，His—束支—Purkinje 快速激动心室。</li><li>电去极化先于机械收缩；长平台和不应期支持有效泵血并防止强直。</li><li>等容阶段四瓣关闭、心室容积不变；射血与充盈阶段的瓣膜状态相反。</li><li>肺循环低压低阻，体循环高压；串联稳态下左右心输出匹配。</li></ol></div>
+        </section>
+
+        <footer class="page-footer"><span>CARDIAC LAB <i>/</i> 让每一条曲线，都能回到一个结构与一次心搏。</span><span>本科教学示意 · 课程投用前由授课教师复核教材版本</span></footer>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="sourcesDialog" class="info-dialog"><div class="dialog-head"><div><span class="eyebrow">CURRICULUM & REFERENCES</span><h2>课程体系与参考来源</h2></div><button class="dialog-close" data-close-dialog aria-label="关闭">×</button></div><div class="dialog-body"><p>知识主线按大学系统解剖学与生理学基础内容组织：心腔与瓣膜 → 心肌电生理/传导 → 心动周期 → 体肺循环动力学。内容以可公开核对的解剖与生理学教材章节、NCBI Bookshelf 生理学条目交叉核对。</p><div id="sourceList" class="source-list"></div><div class="source-license">压力与心率是教学示意值，不构成个体临床判断。模型几何为原创简化示意，不宣称工业级医学建模、医学器械认证或高校课程认证。</div></div></dialog>
+  <dialog id="teacherDialog" class="info-dialog"><div class="dialog-head"><div><span class="eyebrow">INSTRUCTOR GUIDE</span><h2>教师导学</h2></div><button class="dialog-close" data-close-dialog aria-label="关闭">×</button></div><div class="dialog-body teacher-notes"><h3>建议 30 分钟实训节奏</h3><ol><li>5 分钟：使用三维模型辨认方位、四腔、四瓣和血管。</li><li>6 分钟：比较起搏细胞与工作心肌动作电位，解释不应期。</li><li>10 分钟：用同一游标联动 ECG、压力、瓣膜和容积曲线。</li><li>5 分钟：追踪双循环并比较左右室负荷。</li><li>4 分钟：完成实训任务与测验，复核易错点。</li></ol><h3>课堂问题</h3><ul><li>什么压差使主动脉瓣在射血前开放？</li><li>如果 AV 延搁明显缩短，心房对心室充盈时序会怎样变化？</li><li>为什么肺动脉称“动脉”，其中血液却相对低氧？</li></ul><p>建议按本校指定教材版本复核术语、课程进度和临床关联深度。课件的周期波形为示意，不代替实测 Wiggers 图或临床血流动力学。</p></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body></html>

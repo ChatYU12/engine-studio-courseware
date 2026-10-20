@@ -12,6 +12,12 @@
 
 ![课件预览](engine-lab/qa/09-final-offline-desktop.png)
 
+## 心脏解剖与泵血机制实训
+
+[在线预览心脏生理学课件](https://chatyu12.github.io/engine-studio-courseware/heart-lab/) · [课程知识体系](heart-lab/docs/01-课程知识体系.md) · [迭代验收记录](heart-lab/docs/02-迭代与验收记录.md)
+
+大学人体系统解剖学与生理学交互课件，包含可旋转的三维心脏模型、心肌电活动和传导、联动的心动周期压力/瓣膜/容积示意、体肺循环动力学、观察任务与即时测验。单文件版本可下载离线使用；教学模型及数值均标注为示意。
+
 ## 部署
 
 GitHub Pages 从 `main` 分支根目录发布，入口为 `index.html`，`.nojekyll` 保持静态文件直接发布。
@@ -22,10 +28,13 @@ GitHub Pages 从 `main` 分支根目录发布，入口为 `index.html`，`.nojek
 npm --prefix engine-lab ci
 npm --prefix engine-lab run check
 (cd engine-lab && npm run build)
+npm --prefix heart-lab ci
+npm --prefix heart-lab run check
+(cd heart-lab && npm run build)
 node scripts/prepare-pages.mjs
 ```
 
-将生成的 `index.html` 与源码一并提交推送，Pages自动更新。
+发布脚本保留根目录的发动机课件，并将心脏课件生成到 `heart-lab/index.html`。将两个入口和源码一并提交推送，Pages 自动更新。
 
 ## 本地预览
 
@@ -39,4 +48,4 @@ python3 -m http.server 8765
 
 本模型是通用教学结构示意，非量产机型CAD或经认证的维修系统。气门采用理想启闭规则；真实配气相位、油水路、紧固扭矩、间隙和报废限值以对应机型手册为准。课程投用前需任课教师复审。用户学习数据仅在浏览器本机保存。
 
-Three.js / OrbitControls 使用MIT许可证，许可文本保存在 `engine-lab/dist/vendor/THREE-LICENSE.txt`，也已嵌入单文件HTML。
+Three.js / OrbitControls 使用 MIT 许可证。许可文本分别保存在 `engine-lab/dist/vendor/THREE-LICENSE.txt` 和 `heart-lab/src/vendor/THREE-LICENSE.txt`，也嵌入对应的单文件课件。

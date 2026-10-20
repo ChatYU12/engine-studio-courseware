@@ -1,0 +1,14 @@
+{
+  "name": "cardiac-physiology-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8892 --directory src",
+    "check": "node --check src/app.js && node --check src/heart3d.js && node --check src/content.js && node --check src/pressures.js && node scripts/check-hemodynamics.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}

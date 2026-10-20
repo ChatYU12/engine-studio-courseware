@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>心脏三维结构定型预览</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f2ec;color:#182a36;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.layout{min-height:100vh;display:grid;grid-template-columns:minmax(560px,1fr) 310px;gap:24px;padding:24px}.stage{height:min(86vh,900px);min-height:650px;position:relative;border:1px solid #d6d2c9;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 50% 44%,#fffefa,#ecebe5 76%);box-shadow:0 20px 50px #20323d12}.head{position:absolute;z-index:3;top:22px;left:24px;right:24px;display:flex;align-items:start;justify-content:space-between;pointer-events:none}.eyebrow{letter-spacing:.16em;font-size:10px;color:#74858b;font-weight:700}.head h1{font:500 25px/1.25 Georgia,serif;margin:6px 0}.badge{border:1px solid #c7d2d1;border-radius:99px;padding:5px 10px;font-size:11px;color:#426a70;background:#f7faf6}.stage canvas{position:absolute;inset:0;width:100%;height:100%}.anatomy-labels{position:absolute;inset:0;pointer-events:none}.anatomy-label{position:absolute;left:0;top:0;white-space:nowrap;padding:2px 7px;background:#fffefaee;border:1px solid #ded9d0;border-radius:6px;font-size:11px;color:#334751;box-shadow:0 2px 8px #27384010}.tools{position:absolute;z-index:3;bottom:20px;left:20px;right:20px;display:flex;gap:7px;align-items:center;flex-wrap:wrap}.tools button{border:1px solid #cbd4d1;background:#fffefa;color:#314954;border-radius:8px;padding:8px 11px;cursor:pointer}.tools button.active{background:#193942;color:#fff;border-color:#193942}.note{font-size:11px;color:#677a7f;margin-left:auto}.side{padding:24px 8px}.side h2{font:500 24px Georgia,serif;margin:0 0 6px}.side p{color:#62757d;font-size:13px}.legend{display:grid;gap:10px;margin:18px 0 24px}.legend span{display:flex;align-items:center;gap:9px;font-size:12px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.selection{border-top:1px solid #d9d6cf;padding-top:16px;margin-top:20px}.selection b{display:block;font:500 20px Georgia,serif;margin:5px 0}.tiny{font-size:11px;color:#829196}.view-buttons{display:flex;flex-wrap:wrap;gap:6px}.view-buttons button{border:1px solid #cbd4d1;background:#fffefa;border-radius:8px;padding:7px 10px;cursor:pointer}.check{display:flex;gap:8px;align-items:center;font-size:12px;margin:8px 0}.warn{margin-top:20px;padding:12px;border-left:3px solid #cb8a75;background:#f8ebe5;color:#755550;font-size:11px}@media(max-width:900px){.layout{grid-template-columns:1fr;padding:12px}.stage{height:70vh;min-height:500px}.side{padding:12px}.note{width:100%;margin-left:0}}
+</style></head>
+<body><div class="layout"><section class="stage" id="stage"><div class="head"><div><div class="eyebrow">HUMAN PHYSIOLOGY · STRUCTURE PREVIEW</div><h1>心脏三维解剖效果定型</h1><div class="tiny">前面观｜画面左侧为人体解剖右侧｜拖动旋转 · 滚轮缩放</div></div><span class="badge">教学生理示意模型</span></div><div class="tools"><button id="front" class="active">前面</button><button id="posterior">后面</button><button id="left">左侧</button><button id="reset">复位</button><span class="note">非影像分割 / 非临床模型</span></div></section>
+<aside class="side"><div class="eyebrow">MODEL SPECIFICATION</div><h2>空间结构清单</h2><p>三维模型要同时支持四腔认知、单向血流解释与传导路径定位。</p><div class="legend"><span><i class="dot" style="background:#3aafd0"></i>右心：相对低氧血流（蓝）</span><span><i class="dot" style="background:#d64f5b"></i>左心：相对富氧血流（红）</span><span><i class="dot" style="background:#ffcc67"></i>传导组织（黄）</span><span><i class="dot" style="background:#c87e81"></i>心肌/心壁（粉）</span></div>
+<div class="eyebrow">LAYER CONTROL</div><label class="check"><input type="checkbox" data-layer="conduction"> 显示心脏传导系统</label><label class="check"><input type="checkbox" data-layer="flow"> 显示血流粒子</label><label class="check"><input type="checkbox" data-layer="coronary"> 显示冠状动脉/冠状窦</label><label class="check"><input type="checkbox" data-layer="supports"> 显示腱索与乳头肌</label><label class="check"><input type="checkbox" data-layer="septa" checked> 显示房间隔/室间隔</label><label class="check"><input type="checkbox" data-layer="heart-wall" checked> 显示心脏外形</label><label class="check"><input type="checkbox" data-layer="labels" checked> 显示三维结构标注</label>
+<div class="selection"><div class="eyebrow">SELECTED STRUCTURE</div><b id="selectedTitle">选择模型结构</b><div id="selectedText" class="tiny">鼠标点选心腔、瓣膜、传导组织或大血管。最终课件会给出名称、功能和实训观察提示。</div></div>
+<div class="warn">定型约束：左/右始终按人体解剖方位命名；前视左侧显示人体右侧。模型外形与比例用于教学定位，不冒充真实医学影像或医学认证产品。</div></aside></div>
+<script type="module">
+import {createHeartScene} from '../src/heart3d.js';
+const stage=document.querySelector('#stage');
+const names={
+ 'right-atrium':['右心房','接受上、下腔静脉及冠状窦回流，经三尖瓣流向右心室。'],
+ 'left-atrium':['左心房','接受四条肺静脉回流，经二尖瓣流向左心室。'],
+ 'right-ventricle':['右心室','将静脉血经肺动脉瓣射入肺动脉干，驱动低压肺循环。'],
+ 'left-ventricle':['左心室','壁较厚；将血液经主动脉瓣射入主动脉，驱动体循环。'],
+ 'aorta':['主动脉','左心室射出的富氧血经主动脉弓和分支供应体循环。'],
+ 'pulmonary-trunk':['肺动脉干','由右心室发出，分为左右肺动脉；动脉名称按离开心脏命名。'],
+ 'svc':['上腔静脉','将膈以上体循环回流血液送入右心房。'],
+ 'ivc':['下腔静脉','将膈以下体循环回流血液送入右心房。'],
+ 'tricuspid-valve':['三尖瓣','右房室瓣；在舒张期压差允许开放，室缩时关闭。'],
+ 'mitral-valve':['二尖瓣','左房室瓣；有前、后瓣叶并以腱索连于乳头肌。'],
+ 'pulmonary-valve':['肺动脉瓣','右心室流出道的半月瓣，无腱索/乳头肌。'],
+ 'aortic-valve':['主动脉瓣','左心室流出道的半月瓣，无腱索/乳头肌。'],
+ 'septa':['房间隔与室间隔','分隔左右心腔；成人正常循环中无生理性心腔间分流。'],
+ 'interventricular-septum':['室间隔','分隔左右心室，包含传导系统穿行区域。'],
+ 'interatrial-septum':['房间隔','分隔左、右心房。'],
+ 'conduction-system':['传导系统','SA结→心房肌/房间束→AV结（延搁）→希氏束→左右束支→浦肯野纤维。'],
+ 'anterior-interventricular-artery':['前室间支（左前降支）','左冠状动脉的主要分支之一，沿前室间沟下行；分布模式存在个体差异。'],
+ 'right-coronary-artery':['右冠状动脉','起自主动脉根部并沿冠状沟行走，向右心及部分传导组织供血；优势型存在变异。'],
+ 'coronary-sinus':['冠状窦','位于心脏后面的冠状沟，汇集大部分心肌静脉血并开口于右心房。'],
+ 'chordae-tendineae':['腱索与乳头肌','房室瓣支持装置；室缩时乳头肌收缩使腱索张紧，防止瓣叶向心房侧翻。'],
+ 'heart-wall':['心肌与心尖','心室肌自心尖方向收缩有利于将血液射向心底流出道。'],
+ 'pulmonary-arteries':['肺动脉','将右心室输出的相对低氧血送至肺毛细血管。'],
+ 'pulmonary-veins':['肺静脉','将肺气体交换后的富氧血送回左心房。']
+};
+const model=createHeartScene(stage,key=>{const d=names[key]||[key,'结构示意，详情将在完整课件中展开。'];document.querySelector('#selectedTitle').textContent=d[0];document.querySelector('#selectedText').textContent=d[1];});
+document.querySelectorAll('[data-layer]').forEach(el=>el.addEventListener('change',()=>model.setLayer(el.dataset.layer,el.checked)));
+for(const [id,view] of [['front','front'],['posterior','posterior'],['left','left'],['reset','reset']])document.querySelector('#'+id).addEventListener('click',()=>{model.setView(view);document.querySelectorAll('.tools button').forEach(b=>b.classList.toggle('active',b.id===id));});
+let tick=0;setInterval(()=>{tick=(tick+.004)%1;model.updateBeat(tick)},32);
+</script></body></html>
