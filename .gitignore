@@ -8,3 +8,8 @@ engine-lab/qa/*.png
 !engine-lab/qa/12-final-offline-mobile.png
 *.zip
 .DS_Store
+# The PC lesson's Sites source metadata stays local; publish only its app and documentation.
+/.pc-lab-source.git/
+/pc-lab/.git
+/pc-lab/.openai/
+/pc-lab/node_modules/

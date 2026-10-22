@@ -18,6 +18,12 @@
 
 大学人体系统解剖学与生理学交互课件，包含可旋转的三维心脏模型、心肌电活动和传导、联动的心动周期压力/瓣膜/容积示意、体肺循环动力学、观察任务与即时测验。单文件版本可下载离线使用；教学模型及数值均标注为示意。
 
+## 电脑主机搭建与拆解实训
+
+[在线预览电脑主机课件](https://chatyu12.github.io/engine-studio-courseware/pc-lab/) · [课程知识体系](pc-lab/docs/01-课程知识体系.md) · [教师使用说明](pc-lab/docs/教师使用说明.md) · [迭代验收记录](pc-lab/docs/迭代与验收记录.md) · [下载课件交付包](pc-lab/电脑主机拆装实训-交付包.zip)
+
+Three.js互动实训覆盖断电与防静电、部件兼容识别、20个装配工位、15个逆序拆卸工位、故障排查及POST/UEFI检查。所有硬件按MSI B550-A PRO / Ryzen 5 5600教学平台编排；单文件 HTML 和源码、效果图及浏览器验收证据一并提供。
+
 ## 部署
 
 GitHub Pages 从 `main` 分支根目录发布，入口为 `index.html`，`.nojekyll` 保持静态文件直接发布。
@@ -31,10 +37,13 @@ npm --prefix engine-lab run check
 npm --prefix heart-lab ci
 npm --prefix heart-lab run check
 (cd heart-lab && npm run build)
+npm --prefix pc-lab ci
+npm --prefix pc-lab run check
+(cd pc-lab && npm run build)
 node scripts/prepare-pages.mjs
 ```
 
-发布脚本保留根目录的发动机课件，并将心脏课件生成到 `heart-lab/index.html`。将两个入口和源码一并提交推送，Pages 自动更新。
+发布脚本保留根目录的发动机课件，并将心脏课件、电脑主机课件分别生成到 `heart-lab/index.html` 和 `pc-lab/index.html`。将三个入口和源码一并提交推送，Pages 自动更新。
 
 ## 本地预览
 

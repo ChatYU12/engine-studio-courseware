@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#11171c">
+  <meta name="description" content="电脑硬件组装实训：AM4／DDR4平台，三维结构观察、爆炸拆解、20工位装配与15工位拆卸，附排故练习。">
+  <title>PC LAB · 电脑主机拆装实训</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%23151d23'/%3E%3Ctext%20x='32'%20y='43'%20text-anchor='middle'%20font-family='Arial,sans-serif'%20font-size='32'%20font-weight='700'%20fill='%23efb34f'%3EPC%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#workbench">跳到实训工作台</a>
+  <header class="topbar">
+    <a class="brand" href="#workbench" aria-label="电脑主机拆装实训首页"><span class="brand-mark">P<span>C</span></span><span><strong>电脑主机拆装实训</strong><small>PC ASSEMBLY WORKBENCH</small></span></a>
+    <nav class="mode-nav" aria-label="工作台模式">
+      <button data-mode="observe" aria-pressed="true">自由观察</button>
+      <button data-mode="explode" aria-pressed="false">爆炸拆解</button>
+      <button data-mode="assemble" aria-pressed="false">分步装配</button>
+      <button data-mode="disassemble" aria-pressed="false">规范拆卸</button>
+    </nav>
+    <div class="header-actions"><button id="assessment" class="outline-btn">实训考核 <span>↗</span></button><button id="help" class="icon-btn" aria-label="打开操作帮助">?</button></div>
+  </header>
+  <div class="coursebar"><div><span class="status-dot"></span><strong>硬件装配实训室</strong><span class="divider">/</span><span>ATX · AM4 · DDR4</span></div><div class="course-meta"><span>20 个装配工位</span><span>15 个拆卸工位</span><button id="platform-btn">教学平台与来源 ↗</button></div></div>
+  <main id="workbench" class="workbench">
+    <aside class="sidebar" aria-label="任务与部件目录">
+      <div class="sidebar-tabs"><button id="tasks-tab" aria-pressed="true">实训流程</button><button id="parts-tab" aria-pressed="false">部件清单</button></div>
+      <div class="sidebar-summary"><span id="list-subtitle">ASSEMBLY SEQUENCE</span><span id="list-count">20 STEPS</span></div>
+      <div id="outline" class="outline"></div>
+      <div class="sidebar-footer"><div><span class="tiny-square"></span><span>先断电，再操作内部组件</span></div><p>结构示意用于教学；实际操作遵循对应硬件手册与实训室规范。</p></div>
+    </aside>
+    <section class="stage-column" aria-label="三维交互工作台">
+      <div class="stage" id="stage">
+        <div class="stage-caption"><span class="live-badge"><i></i> 实时三维</span><span id="stage-mode">整机结构观察</span></div>
+        <div id="viewport" aria-label="电脑主机三维模型。拖动旋转，滚轮缩放；也可用下方视角按钮。"></div>
+        <div id="loading" class="loading"><span class="spinner"></span><strong>正在建立三维工作台</strong><span>准备硬件组件与材质…</span></div>
+        <div id="scene-error" class="scene-error" hidden><strong>当前设备未能启动 WebGL</strong><p>请使用支持硬件加速的现代浏览器。你仍可阅读步骤、部件知识并完成测验。</p></div>
+        <div class="viewport-tools" aria-label="模型工具"><button id="labels-btn" aria-pressed="true" title="显示或隐藏标签">标签</button><button id="isolate-btn" aria-pressed="false" title="只观察选中部件">隔离</button><button id="reset-view" title="复位模型视角">复位 ↻</button><button id="capture" title="导出三维模型截图">截图 ↓</button></div>
+        <div class="view-switch" aria-label="预设视角"><button data-view="iso" aria-pressed="true">立体</button><button data-view="side" aria-pressed="false">主板侧</button><button data-view="rear" aria-pressed="false">后部</button><button data-view="top" aria-pressed="false">俯视</button></div>
+        <div class="stage-legend"><span><i class="legend-amber"></i> 当前部件</span><span>拖动旋转 · 滚轮缩放</span></div>
+        <div id="step-hud" class="step-hud"><span class="hud-index">EXPLORE</span><div><strong>从整机认识每一个部件</strong><span>点选模型或部件清单，查看作用与接口。</span></div></div>
+      </div>
+      <div class="transport">
+        <div class="transport-top"><div class="transport-title"><span id="transport-kicker">STRUCTURE EXPLORATION</span><strong id="transport-title">整机结构</strong></div><div class="transport-buttons"><button id="restart" class="icon-btn" aria-label="重播当前模式">↶</button><button id="previous" class="icon-btn" aria-label="上一步">❮</button><button id="play" class="play-btn" aria-label="播放动画"><span>▶</span> 播放</button><button id="next" class="icon-btn" aria-label="下一步">❯</button><select id="speed" aria-label="动画速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div><span id="step-counter" class="step-counter">READY</span></div>
+        <div class="timeline-row"><span id="range-left">合拢</span><input id="timeline" type="range" min="0" max="100" value="0" step="1" aria-label="爆炸拆解程度"><output id="range-value" for="timeline">0%</output><span id="range-right">展开</span></div>
+      </div>
+      <div class="workbench-bottom"><span>教学几何模型 · 不用于尺寸或力矩测量</span><span id="render-status">THREE.JS · LOCAL ASSETS</span></div>
+    </section>
+    <aside class="inspector" aria-label="操作指导与部件知识"><div class="inspector-heading"><span id="inspector-label">部件知识</span><span id="inspector-index">01</span></div><div id="inspector-content" class="inspector-content"></div><div class="inspector-bottom"><button id="quiz-btn">知识自测 <span>↗</span></button><button id="faults-btn">故障排查 <span>↗</span></button></div></aside>
+  </main>
+  <footer class="page-footer"><span><strong>PC LAB</strong> 计算机硬件组装实训</span><div><button id="motion-btn" aria-pressed="false">减少动态</button><button id="report-btn">学习报告 ↓</button><button id="sources-btn">知识来源 ↗</button></div><span id="save-status">学习记录保存在此浏览器</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="modal"><div class="dialog-head"><div><span id="dialog-kicker">PC LAB / LEARNING</span><h2 id="dialog-title"></h2></div><button id="close-modal" class="icon-btn" aria-label="关闭窗口">×</button></div><div id="dialog-body"></div></dialog>
+  <noscript><div class="noscript">本课件需要启用 JavaScript 才能显示实时三维。固定平台：MSI B550-A PRO、Ryzen 5 5600、DDR4 A2/B2、RTX 3060 独显。先关机、关闭电源并拔交流线；按主板及对应部件手册开展实训。请参阅随附课程知识体系与使用说明。</div></noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

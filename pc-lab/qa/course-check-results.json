@@ -1,0 +1,116 @@
+{
+  "time": "2026-10-20T12:33:23.441Z",
+  "scope": "Course-data/state and app-control regression; no visual or WebGL rendering assertions",
+  "passed": 27,
+  "total": 27,
+  "cases": [
+    {
+      "name": "20 assembly / 15 disassembly stations and unique identifiers",
+      "passed": true
+    },
+    {
+      "name": "All course part/source references resolve; no hidden typo installs",
+      "passed": true
+    },
+    {
+      "name": "Opening the case starts with a fitted panel, then removes it; closing restores it",
+      "passed": true
+    },
+    {
+      "name": "AM4 preparation preserves backplate and disconnects CPU fan until A08",
+      "passed": true
+    },
+    {
+      "name": "A2/B2 fill together and cannot be powered before installation",
+      "passed": true
+    },
+    {
+      "name": "M.2 insertion has cover clear while SSD enters, then restores cover",
+      "passed": true
+    },
+    {
+      "name": "Power prerequisites become complete only after GPU auxiliary power",
+      "passed": true
+    },
+    {
+      "name": "All eight pre-power checks and all safety checks require explicit true",
+      "passed": true
+    },
+    {
+      "name": "Complete assembly equals the same complete machine used for observation",
+      "passed": true
+    },
+    {
+      "name": "Optional SATA has both independent connections and leaves main route complete",
+      "passed": true
+    },
+    {
+      "name": "Disassembly releases GPU power before card and external board harnesses before board",
+      "passed": true
+    },
+    {
+      "name": "D09 removes M.2 cover before moving SSD",
+      "passed": true
+    },
+    {
+      "name": "AM4 disassembly disconnects fan before cooler; locked CPU remains until D13",
+      "passed": true
+    },
+    {
+      "name": "Both complete disassembly variants retain fixed chassis fans but disconnect SYS_FAN",
+      "passed": true
+    },
+    {
+      "name": "Case fan connection changes independently of the fixed physical fans",
+      "passed": true
+    },
+    {
+      "name": "AM4 cooler remains seated during the initial release/twist phase",
+      "passed": true
+    },
+    {
+      "name": "Animation endpoints are deterministic and bounded at every station",
+      "passed": true
+    },
+    {
+      "name": "Viewing/rendering any station does not mutate completion or course data",
+      "passed": true
+    },
+    {
+      "name": "Knowledge scoring snapshots preserve critical failures even above 80 points",
+      "passed": true
+    },
+    {
+      "name": "Stored progress read degrades on denied access, malformed JSON and non-object JSON",
+      "passed": true
+    },
+    {
+      "name": "Unavailable localStorage and WebGL keep knowledge controls usable",
+      "passed": true
+    },
+    {
+      "name": "Practice blocks jumping, unconfirmed steps and pre-power bypass; demo awards nothing",
+      "passed": true
+    },
+    {
+      "name": "Timeline input captures the new control value before transport synchronization writes it",
+      "passed": true
+    },
+    {
+      "name": "Disassembly practice requires a fresh entry check and preserves prior assembly record",
+      "passed": true
+    },
+    {
+      "name": "Unconfigured SATA disassembly station may be skipped without fake component checks",
+      "passed": true
+    },
+    {
+      "name": "Submitted assessment is an immutable evidence snapshot after answer correction",
+      "passed": true
+    },
+    {
+      "name": "Digital completion cannot pass while safety-critical fault judgments are wrong or unanswered",
+      "passed": true
+    }
+  ]
+}

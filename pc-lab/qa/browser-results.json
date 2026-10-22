@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-20",
+  "timezone": "Asia/Shanghai",
+  "origin": "http://localhost:8893/",
+  "assemblyStations": 20,
+  "disassemblyStations": 15,
+  "quizAttempts": [
+    "94, critical failed",
+    "100, critical passed"
+  ],
+  "faultsCorrect": 8,
+  "reportDownloaded": true,
+  "pngDownloaded": true,
+  "viewports": [
+    "1440x900",
+    "1280x720",
+    "390x844"
+  ],
+  "mobileHorizontalOverflow": false,
+  "console": [],
+  "renderSample": {
+    "calls": 436,
+    "drawCalls": 436,
+    "triangles": 38156,
+    "geometries": 374,
+    "textures": 47,
+    "fps": 60,
+    "pixelRatio": 1,
+    "width": 688,
+    "height": 412,
+    "webgl": true
+  },
+  "fileProtocolTest": "Blocked by browser security policy; no workaround attempted",
+  "physicalNetworkOfflineTest": "Not performed",
+  "note": "Browser evidence complements 27 data/state/control checks; no CAD or cross-GPU certification."
+}

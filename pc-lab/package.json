@@ -1,0 +1,12 @@
+{
+  "name": "pc-assembly-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8893 --directory dist",
+    "check": "node --check src/app.js && node --check src/pc-scene.js && node --check src/content.js && node scripts/check-course.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {"esbuild": "0.25.10"}
+}
